@@ -1,0 +1,23 @@
+image:
+  tag: 6.5.1
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: podinfo.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+serviceMonitor:
+  enabled: true
+  interval: 15s
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 32Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi

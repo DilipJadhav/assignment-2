@@ -1,0 +1,28 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: podinfo
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: podinfo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  sources:
+    - repoURL: https://stefanprodan.github.io/podinfo
+      chart: podinfo
+      targetRevision: 6.5.0
+      helm:
+        releaseName: podinfo
+        valueFiles:
+          - $values/apps/podinfo/values.yaml
+    - repoURL: https://github.com/DilipJadhav/assignment-2.git
+      targetRevision: HEAD
+      ref: values
