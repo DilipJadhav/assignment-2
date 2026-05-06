@@ -98,14 +98,6 @@ The Prometheus CRD is large enough to hit the annotation size limit. I set `Serv
 ### 5) Namespace rendering issues
 Some rendered resources were missing namespaces during validation. I fixed this by explicitly setting the destination namespace and making sure namespace-related settings were applied in the Helm source.
 
-## Screenshots
-
-Add the following screenshots under `screenshots/`:
-
-- `argocd-all-synced.png` — Argo CD UI showing all apps Synced/Healthy.
-- `podinfo-before.png` — podinfo UI before the Git change.
-- `podinfo-after.png` — podinfo UI after changing `image.tag`.
-- `grafana-custom-panel.png` — Grafana custom panel working.
 
 ## Design Notes
 
